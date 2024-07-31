@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,13 +8,31 @@ import {
   Text,
   StatusBar,
   TouchableOpacity,
-  Linking,
+  Linking
 } from 'react-native';
+import { useFonts } from 'expo-font';
 import Svg, { G, Path } from 'react-native-svg';
+import SourceSans3Bold from '../../assets/fonts/SourceSans3Bold.ttf';
+import SourceSans3Medium from '../../assets/fonts/SourceSans3Medium.ttf';
+import SourceSans3Regular from '../../assets/fonts/SourceSans3Regular.ttf';
+import SourceSans3SemiBold from '../../assets/fonts/SourceSans3SemiBold.ttf';
 
 export const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
   const scrollViewRef = useRef<null | ScrollView>(null);
+
+  const [fontsLoaded, fontError] = useFonts({
+    'SourceSans3Regular': SourceSans3Regular,
+    'SourceSans3Medium': SourceSans3Medium,
+    'SourceSans3SemiBold': SourceSans3SemiBold,
+    'SourceSans3Bold': SourceSans3Bold,
+  });
+
+  useEffect(() => {
+    console.log('fontError:', fontError);
+    console.log('fontsLoaded:', fontsLoaded);
+  }, [fontError, fontsLoaded]);
+
 
   return (
     <>
@@ -34,7 +52,10 @@ export const App = () => {
           <View style={styles.section}>
             <Text style={styles.textLg}>Hello there,</Text>
             <Text
-              style={[styles.textXL, styles.appTitleText]}
+              style={[
+                styles.textXL, styles.appTitleText,
+                { fontFamily: 'SourceSans3Bold' },
+              ]}
               testID="heading"
               role="heading"
             >

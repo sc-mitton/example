@@ -7,7 +7,10 @@
   "dependencies": {
     "@expo/metro-config": "~0.18.1",
     "@expo/metro-runtime": "~3.2.1",
-    "expo": "~51.0.8",
+    "@react-native/assets-registry": "^0.74.86",
+    "expo": "~51.0.24",
+    "expo-font": "~12.0.9",
+    "expo-modules-autolinking": "~1.11.0",
     "expo-splash-screen": "~0.27.4",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
